@@ -1,7 +1,66 @@
-
+/* Light Mode */
 body {
   font-family: 'Titillium Web', sans-serif;
+  background-color: #ffffff;
   color: #333;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  body {
+    font-family: 'Titillium Web', sans-serif;
+    background-color: #333;
+    color: #ffffff;
+  }
+
+  .blinking-cursor {
+    color: #ffffff; /* Colore per dark mode */
+  }
+
+  @keyframes "blink-dark" {
+    from, to {
+      color: transparent;
+    }
+    50% {
+      color: #ffffff;
+    }
+  }
+
+  @-moz-keyframes blink-dark {
+    from, to {
+      color: transparent;
+    }
+    50% {
+      color: #ffffff;
+    }
+  }
+
+  @-webkit-keyframes "blink-dark" {
+    from, to {
+      color: transparent;
+    }
+    50% {
+      color: #ffffff;
+    }
+  }
+
+  @-ms-keyframes "blink-dark" {
+    from, to {
+      color: transparent;
+    }
+    50% {
+      color: #ffffff;
+    }
+  }
+
+  @-o-keyframes "blink-dark" {
+    from, to {
+      color: transparent;
+    }
+    50% {
+      color: #ffffff;
+    }
+  }
 }
 
 a:link, a:visited {
@@ -11,7 +70,7 @@ a:link, a:visited {
 }
 
 a:hover {
-  text-decoration: underline
+  text-decoration: underline;
 }
 
 .blinking-cursor {
