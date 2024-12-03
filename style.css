@@ -2,12 +2,12 @@
 body {
   font-family: 'Titillium Web', sans-serif;
   background-color: #ffffff;
-  color: #333;
+  color: #333333;
 }
 
 a:link, a:visited {
   text-decoration: none;
-  color: #333;
+  color: #333333;
   font-weight: 600;
 }
 
@@ -18,7 +18,7 @@ a:hover {
 .blinking-cursor {
   font-weight: 200;
   font-size: 16px;
-  color: #2E3D48;
+  color: black; /* Default per Light Mode */
   -webkit-animation: blink 1s step-end infinite;
   -moz-animation: blink 1s step-end infinite;
   -ms-animation: blink 1s step-end infinite;
@@ -26,6 +26,7 @@ a:hover {
   animation: blink 1s step-end infinite;
 }
 
+/* Animazione per Light Mode */
 @keyframes blink {
   from, to {
     color: transparent;
@@ -75,7 +76,7 @@ a:hover {
 @media (prefers-color-scheme: dark) {
   body {
     font-family: 'Titillium Web', sans-serif;
-    background-color: #333;
+    background-color: #333333;
     color: #ffffff;
   }
 
@@ -88,7 +89,7 @@ a:hover {
   }
 
   .blinking-cursor {
-    color: #ffffff; /* Cambiato a bianco per dark mode */
+    color: white; /* Cursore bianco per Dark Mode */
     -webkit-animation: blink-dark 1s step-end infinite;
     -moz-animation: blink-dark 1s step-end infinite;
     -ms-animation: blink-dark 1s step-end infinite;
@@ -96,12 +97,13 @@ a:hover {
     animation: blink-dark 1s step-end infinite;
   }
 
+  /* Animazione per Dark Mode */
   @keyframes blink-dark {
     from, to {
       color: transparent;
     }
     50% {
-      color: #ffffff;
+      color: white;
     }
   }
 
@@ -110,7 +112,7 @@ a:hover {
       color: transparent;
     }
     50% {
-      color: #ffffff;
+      color: white;
     }
   }
 
@@ -119,7 +121,7 @@ a:hover {
       color: transparent;
     }
     50% {
-      color: #ffffff;
+      color: white;
     }
   }
 
@@ -128,7 +130,7 @@ a:hover {
       color: transparent;
     }
     50% {
-      color: #ffffff;
+      color: white;
     }
   }
 
@@ -137,7 +139,7 @@ a:hover {
       color: transparent;
     }
     50% {
-      color: #ffffff;
+      color: white;
     }
   }
 }
