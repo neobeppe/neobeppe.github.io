@@ -4,9 +4,9 @@
     <meta name="description" content="Welcome to my personal page where you can find something about me">
     <meta name="apple-mobile-web-app-title" content="Beppe">
 
-    <script src="/analytics.js"></script>
+    <script src="/scripts/analytics.js"></script>
     
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="/assets/style.css">
     <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
 
     <!-- Favicon -->
@@ -36,14 +36,30 @@
 </head>
 
 <body>
-    <br/>
-    <p>Hello, my name Giuseppe Travasoni but you can call me Beppe</p>
-    <p>I've co-founded and I'm running <a href="https://truescreen.app" target="_blank">TrueScreen</a> and <a href="https://beatcode.it" target="_blank">Beatcode</a></p>
-    <p>Previously I've worked as Senior iOS Developer and Team Leader at <a href="http://ynap.com" target="_blank">YOOX NET-A-PORTER Group</a>, <a href="http://shopfullygroup.com" target="_blank">ShopFully</a> and some other companies
-    </br>You can get in touch with me on <a href="https://www.linkedin.com/in/giuseppetravasoni/" target="_blank">LinkedIn</a> or via email at <a id="mailto"></a></p>
-    <p>In my free time, I ride my road bike for <a href="https://teamkannelloni.com/" target="_blank">Team Kannelloni</a>, raising funds for <a href="https://www.ail.it/" target="_blank">AIL</a>, and post some photos on my <a href="https://www.instagram.com/beppe_travasoni/" target="_blank">Instagram account</a></p>
 
-    <p>Best,<br/>Beppe<span class="blinking-cursor">|</span></p>
+    <div class="language-selector">
+        <button id="btn-it">🇮🇹</button> | 
+        <button id="btn-en">🇬🇧</button>
+    </div>
+
+    <div id="content">
+        <p id="body"></p>
+    </div>
+
+    <script src="/assets/languages.js"></script>
+    <script>
+        const body = document.getElementById('body');
+        
+        function updateLanguage(lang) {
+            body.innerHTML = languages[lang].body;
+        }
+
+        const userLang = navigator.language.startsWith('it') ? 'it' : 'en';
+        updateLanguage(userLang);
+
+        document.getElementById('btn-it').addEventListener('click', () => updateLanguage('it'));
+        document.getElementById('btn-en').addEventListener('click', () => updateLanguage('en'));
+    </script>
 
     <script>
         var mail = Array.from("ep.peb@em").reverse().join("")
