@@ -19,14 +19,14 @@ a:hover {
   font-weight: 200;
   font-size: 16px;
   color: #2E3D48;
-  -webkit-animation: 1s blink step-end infinite;
-  -moz-animation: 1s blink step-end infinite;
-  -ms-animation: 1s blink step-end infinite;
-  -o-animation: 1s blink step-end infinite;
-  animation: 1s blink step-end infinite;
+  -webkit-animation: blink 1s step-end infinite;
+  -moz-animation: blink 1s step-end infinite;
+  -ms-animation: blink 1s step-end infinite;
+  -o-animation: blink 1s step-end infinite;
+  animation: blink 1s step-end infinite;
 }
 
-@keyframes "blink" {
+@keyframes blink {
   from, to {
     color: transparent;
   }
@@ -44,7 +44,7 @@ a:hover {
   }
 }
 
-@-webkit-keyframes "blink" {
+@-webkit-keyframes blink {
   from, to {
     color: transparent;
   }
@@ -53,7 +53,7 @@ a:hover {
   }
 }
 
-@-ms-keyframes "blink" {
+@-ms-keyframes blink {
   from, to {
     color: transparent;
   }
@@ -62,7 +62,7 @@ a:hover {
   }
 }
 
-@-o-keyframes "blink" {
+@-o-keyframes blink {
   from, to {
     color: transparent;
   }
@@ -88,10 +88,15 @@ a:hover {
   }
 
   .blinking-cursor {
-    color: #ffffff; /* Colore per dark mode */
+    color: #ffffff; /* Cambiato a bianco per dark mode */
+    -webkit-animation: blink-dark 1s step-end infinite;
+    -moz-animation: blink-dark 1s step-end infinite;
+    -ms-animation: blink-dark 1s step-end infinite;
+    -o-animation: blink-dark 1s step-end infinite;
+    animation: blink-dark 1s step-end infinite;
   }
 
-  @keyframes "blink-dark" {
+  @keyframes blink-dark {
     from, to {
       color: transparent;
     }
@@ -109,7 +114,7 @@ a:hover {
     }
   }
 
-  @-webkit-keyframes "blink-dark" {
+  @-webkit-keyframes blink-dark {
     from, to {
       color: transparent;
     }
@@ -118,7 +123,7 @@ a:hover {
     }
   }
 
-  @-ms-keyframes "blink-dark" {
+  @-ms-keyframes blink-dark {
     from, to {
       color: transparent;
     }
@@ -127,7 +132,7 @@ a:hover {
     }
   }
 
-  @-o-keyframes "blink-dark" {
+  @-o-keyframes blink-dark {
     from, to {
       color: transparent;
     }
