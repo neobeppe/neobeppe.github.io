@@ -3,9 +3,12 @@ from datetime import datetime
 
 base_url = "https://bep.pe"
 
+excluded_directories = ["instagram"]
+
 def generate_sitemap(base_url, directory=".", output="sitemap.xml"):
     urls = []
     for root, dirs, files in os.walk(directory):
+        dirs[:] = [d for d in dirs if d not in excluded_directories]
         for file in files:
             if file.endswith(".html"):
                 path = os.path.relpath(os.path.join(root, file), directory)
