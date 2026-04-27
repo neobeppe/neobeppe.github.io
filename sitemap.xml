@@ -6,28 +6,4 @@
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
    </url>
-   <url>
-      <loc>https://bep.pe/magictales/</loc>
-      <lastmod>2026-04-27</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.5</priority>
-   </url>
-   <url>
-      <loc>https://bep.pe/magictales/privacy_policy.html</loc>
-      <lastmod>2026-04-27</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.5</priority>
-   </url>
-   <url>
-      <loc>https://bep.pe/magictales/support.html</loc>
-      <lastmod>2026-04-27</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.5</priority>
-   </url>
-   <url>
-      <loc>https://bep.pe/magictales/terms.html</loc>
-      <lastmod>2026-04-27</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.5</priority>
-   </url>
 </urlset>

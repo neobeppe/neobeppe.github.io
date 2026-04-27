@@ -3,7 +3,7 @@ from datetime import datetime
 
 base_url = "https://bep.pe"
 
-excluded_directories = ["instagram"]
+excluded_directories = ["instagram", "magictales"]
 excluded_files = {"privacy.html"}
 
 

@@ -14,6 +14,10 @@ function hydrateEmail(container) {
     const anchor = container.querySelector("[data-email]");
     const mail = emailAddress();
 
+    if (!anchor) {
+        return;
+    }
+
     anchor.href = `mailto:${mail}`;
     anchor.textContent = mail;
 }
@@ -22,8 +26,8 @@ function updateLanguage(lang) {
     const template = document.getElementById(`content-${lang}`) || document.getElementById("content-en");
     const fragment = template.content.cloneNode(true);
 
-    hydrateEmail(fragment);
     content.replaceChildren(fragment);
+    hydrateEmail(content);
     document.documentElement.lang = lang;
 
     Object.entries(buttons).forEach(([buttonLang, button]) => {
