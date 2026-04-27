@@ -1,22 +1,39 @@
-const languages = {
-    en: {
-        body: `
-            <br/>
-            <p>Hello, my name is Giuseppe Travasoni but you can call me Beppe</p>
-            <p>I've co-founded and I'm running two startups: <a href="https://truescreen.app" target="_blank">TrueScreen</a> and <a href="https://beatcode.it" target="_blank">Beatcode</a>
-            <br/>You can get in touch with me on <a href="https://www.linkedin.com/in/giuseppetravasoni/" target="_blank">LinkedIn</a> or via email at <a id="mailto"></a></p>
-            <p>In my free time, I ride my road bike for <a href="https://teamkannelloni.com/" target="_blank">Team Kannelloni</a>, raising funds for <a href="https://www.ail.it/" target="_blank">AIL</a>, and post some photos on my <a href="https://www.instagram.com/beppe_travasoni/" target="_blank">Instagram account</a></p>
-            <p>Best,<br/>Beppe<span class="blinking-cursor">|</span></p>
-        `
-    },
-    it: {
-        body: `
-            <br/>
-            <p>Ciao, mi chiamo Giuseppe Travasoni ma puoi chiamarmi Beppe</p>
-            <p>Ho co-fondato e gestisco due startup: <a href="https://truescreen.app" target="_blank">TrueScreen</a> e <a href="https://beatcode.it" target="_blank">Beatcode</a>
-            <br/>Puoi contattarmi su <a href="https://www.linkedin.com/in/giuseppetravasoni/" target="_blank">LinkedIn</a> o via email a <a id="mailto"></a></p>
-            <p>Nel mio tempo libero, corro in bici da corsa per il <a href="https://teamkannelloni.com/" target="_blank">Team Kannelloni</a>, raccogliendo fondi per <a href="https://www.ail.it/" target="_blank">AIL</a>, e pubblico alcune foto sul mio <a href="https://www.instagram.com/beppe_travasoni/" target="_blank">profilo Instagram</a></p>
-            <p>A presto,<br/>Beppe<span class="blinking-cursor">|</span></p>
-        `
-    }
+const content = document.getElementById("content");
+const buttons = {
+    it: document.getElementById("btn-it"),
+    en: document.getElementById("btn-en")
 };
+
+function emailAddress() {
+    return [109, 101, 64, 98, 101, 112, 46, 112, 101]
+        .map((code) => String.fromCharCode(code))
+        .join("");
+}
+
+function hydrateEmail(container) {
+    const anchor = container.querySelector("[data-email]");
+    const mail = emailAddress();
+
+    anchor.href = `mailto:${mail}`;
+    anchor.textContent = mail;
+}
+
+function updateLanguage(lang) {
+    const template = document.getElementById(`content-${lang}`) || document.getElementById("content-en");
+    const fragment = template.content.cloneNode(true);
+
+    hydrateEmail(fragment);
+    content.replaceChildren(fragment);
+    document.documentElement.lang = lang;
+
+    Object.entries(buttons).forEach(([buttonLang, button]) => {
+        button.setAttribute("aria-pressed", String(buttonLang === lang));
+    });
+}
+
+const userLang = navigator.language.startsWith("it") ? "it" : "en";
+
+buttons.it.addEventListener("click", () => updateLanguage("it"));
+buttons.en.addEventListener("click", () => updateLanguage("en"));
+
+updateLanguage(userLang);

@@ -1,166 +1,90 @@
-/* Light Mode */
-body {
-  font-family: 'Titillium Web', sans-serif;
-  background-color: #ffffff;
-  color: #333333;
+:root {
+  --bg: #ffffff;
+  --text: #333333;
+  --focus: #777777;
 }
 
-a:link, a:visited {
-  text-decoration: none;
-  color: #333333;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #333333;
+    --text: #ffffff;
+    --focus: #c9c9c9;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 48px 16px 16px;
+  font-family: "Titillium Web", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+main {
+  max-width: 760px;
+}
+
+a {
+  color: inherit;
   font-weight: 600;
+  text-decoration: none;
 }
 
 a:hover {
   text-decoration: underline;
 }
 
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
 .blinking-cursor {
-  font-weight: 200;
   font-size: 16px;
-  color: black; /* Default per Light Mode */
-  -webkit-animation: blink 1s step-end infinite;
-  -moz-animation: blink 1s step-end infinite;
-  -ms-animation: blink 1s step-end infinite;
-  -o-animation: blink 1s step-end infinite;
+  font-weight: 200;
   animation: blink 1s step-end infinite;
-}
-
-/* Animazione per Light Mode */
-@keyframes blink {
-  from, to {
-    color: transparent;
-  }
-  50% {
-    color: black;
-  }
-}
-
-@-moz-keyframes blink {
-  from, to {
-    color: transparent;
-  }
-  50% {
-    color: black;
-  }
-}
-
-@-webkit-keyframes blink {
-  from, to {
-    color: transparent;
-  }
-  50% {
-    color: black;
-  }
-}
-
-@-ms-keyframes blink {
-  from, to {
-    color: transparent;
-  }
-  50% {
-    color: black;
-  }
-}
-
-@-o-keyframes blink {
-  from, to {
-    color: transparent;
-  }
-  50% {
-    color: black;
-  }
-}
-
-/* Dark Mode */
-@media (prefers-color-scheme: dark) {
-  body {
-    font-family: 'Titillium Web', sans-serif;
-    background-color: #333333;
-    color: #ffffff;
-  }
-
-  a:link, a:visited {
-    color: #ffffff;
-  }
-
-  a:hover {
-    text-decoration: underline;
-  }
-
-  .blinking-cursor {
-    color: white; /* Cursore bianco per Dark Mode */
-    -webkit-animation: blink-dark 1s step-end infinite;
-    -moz-animation: blink-dark 1s step-end infinite;
-    -ms-animation: blink-dark 1s step-end infinite;
-    -o-animation: blink-dark 1s step-end infinite;
-    animation: blink-dark 1s step-end infinite;
-  }
-
-  /* Animazione per Dark Mode */
-  @keyframes blink-dark {
-    from, to {
-      color: transparent;
-    }
-    50% {
-      color: white;
-    }
-  }
-
-  @-moz-keyframes blink-dark {
-    from, to {
-      color: transparent;
-    }
-    50% {
-      color: white;
-    }
-  }
-
-  @-webkit-keyframes blink-dark {
-    from, to {
-      color: transparent;
-    }
-    50% {
-      color: white;
-    }
-  }
-
-  @-ms-keyframes blink-dark {
-    from, to {
-      color: transparent;
-    }
-    50% {
-      color: white;
-    }
-  }
-
-  @-o-keyframes blink-dark {
-    from, to {
-      color: transparent;
-    }
-    50% {
-      color: white;
-    }
-  }
 }
 
 .language-selector {
   position: fixed;
   top: 10px;
   right: 10px;
-  font-size: 1em;
   padding: 5px 10px;
-  border-radius: 5px;
+  font-size: 1em;
 }
 
 .language-selector button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1em;
   padding: 5px;
+  font: inherit;
+  cursor: pointer;
+  background: none;
+  border: 0;
 }
 
-.language-selector button:hover {
+.language-selector button[aria-pressed="true"] {
   text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@keyframes blink {
+  from,
+  to {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blinking-cursor {
+    animation: none;
+  }
 }
