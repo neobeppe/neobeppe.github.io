@@ -71,6 +71,7 @@ button:focus-visible {
 }
 
 h1 {
+  position: relative;
   margin: 0;
   font-family: Charter, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
   font-size: clamp(78px, 16vw, 230px);
@@ -81,7 +82,7 @@ h1 {
 
 .cursor {
   display: inline-block;
-  width: .035em;
+  width: .018em;
   height: .72em;
   margin-left: .035em;
   background: currentColor;
@@ -93,6 +94,23 @@ h1 {
 .cursor.hidden {
   opacity: 0;
   animation: none;
+}
+
+.typed-text {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.traveling-dot,
+.moving-tail {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.traveling-dot {
+  z-index: 2;
+  color: var(--text);
+  pointer-events: none;
 }
 
 .bio {
