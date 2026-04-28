@@ -10,6 +10,8 @@ const typedText = document.querySelector("[data-text]");
 const cursor = document.querySelector(".cursor");
 const typingTimers = [];
 const finalText = "Beppe";
+const mobileMedia = window.matchMedia("(max-width: 700px)");
+const reducedMotionMedia = window.matchMedia("(prefers-reduced-motion: reduce)");
 let touchStartY = null;
 
 if (emailAnchor) {
@@ -40,6 +42,12 @@ function revealText() {
 
     completeTyping();
     setRevealed(true);
+}
+
+function revealTextOnMobile() {
+    if (mobileMedia.matches) {
+        revealText();
+    }
 }
 
 function moveDotToEnd() {
@@ -136,9 +144,11 @@ function moveDotToEnd() {
             { duration: 620, easing: "cubic-bezier(.2, 0, 0, 1)" }
         );
     }, 2520));
+
+    typingTimers.push(window.setTimeout(revealTextOnMobile, 3160));
 }
 
-if (typedText && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+if (typedText && !reducedMotionMedia.matches) {
     const text = typedText.dataset.text || typedText.textContent;
     const startDelay = 2200;
     const characterDelay = 180;
@@ -158,6 +168,7 @@ if (typedText && !window.matchMedia("(prefers-reduced-motion: reduce)").matches)
     }, startDelay + text.length * characterDelay + 650));
 } else {
     completeTyping();
+    revealTextOnMobile();
 }
 
 if (nameButton) {
