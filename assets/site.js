@@ -10,6 +10,7 @@ const typedText = document.querySelector("[data-text]");
 const cursor = document.querySelector(".cursor");
 const typingTimers = [];
 const finalText = "Beppe";
+let touchStartY = null;
 
 if (emailAnchor) {
     const mail = emailAddress();
@@ -25,6 +26,20 @@ function completeTyping() {
     }
 
     cursor?.classList.add("hidden");
+}
+
+function setRevealed(isRevealed) {
+    document.body.classList.toggle("revealed", isRevealed);
+    nameButton?.setAttribute("aria-expanded", String(isRevealed));
+}
+
+function revealText() {
+    if (document.body.classList.contains("revealed")) {
+        return;
+    }
+
+    completeTyping();
+    setRevealed(true);
 }
 
 function moveDotToEnd() {
@@ -148,8 +163,25 @@ if (typedText && !window.matchMedia("(prefers-reduced-motion: reduce)").matches)
 if (nameButton) {
     nameButton.addEventListener("click", () => {
         completeTyping();
-
-        const isRevealed = document.body.classList.toggle("revealed");
-        nameButton.setAttribute("aria-expanded", String(isRevealed));
+        setRevealed(!document.body.classList.contains("revealed"));
     });
 }
+
+window.addEventListener("wheel", revealText, { passive: true });
+window.addEventListener("scroll", revealText, { passive: true });
+window.addEventListener("touchstart", (event) => {
+    touchStartY = event.touches[0]?.clientY ?? null;
+}, { passive: true });
+
+window.addEventListener("touchmove", (event) => {
+    if (touchStartY === null) {
+        return;
+    }
+
+    const touchY = event.touches[0]?.clientY;
+
+    if (touchY !== undefined && Math.abs(touchY - touchStartY) > 12) {
+        revealText();
+        touchStartY = null;
+    }
+}, { passive: true });
